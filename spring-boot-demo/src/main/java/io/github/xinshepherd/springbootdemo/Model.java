@@ -5,6 +5,7 @@ import io.github.xinshepherd.excel.annotation.ExcelBigHead;
 import io.github.xinshepherd.excel.annotation.ExcelField;
 import lombok.Data;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -17,7 +18,8 @@ import java.util.Date;
         headerColor = 0x0D,
         herderHigh = 1024,
         rowHigh = 512,
-        fontStyle = CustomFontStyle.class)
+        fontStyle = CustomFontStyle.class
+)
 public class Model {
 
     @ExcelField("Name")
@@ -26,7 +28,7 @@ public class Model {
     @ExcelField(value = "Birthday", type = ExcelField.CellType.DATE, width = 50, headerColor = 0x0C)
     private Date birthDate;
 
-    @ExcelField(value = "Age", type = ExcelField.CellType.NUMERIC)
+    @ExcelField(value = "Age", type = ExcelField.CellType.NUMERIC, customStyle = CustomCellStyleProcessor.class)
     private Integer age;
 
     @ExcelField(value = "Time", type = ExcelField.CellType.DATE, datePattern = "h:mm:ss")
@@ -35,4 +37,9 @@ public class Model {
     @ExcelField(value = "Excel Time", type = ExcelField.CellType.DATE, datePattern = "h:mm:ss")
     private double excelTime;
 
+    @ExcelField(value = "String Time", type = ExcelField.CellType.TIME, datePattern = "h:mm:ss")
+    private String stringTime;
+
+    @ExcelField(value = "Java Time", type = ExcelField.CellType.TIME, datePattern = "h:mm:ss")
+    private LocalTime javaTime;
 }
